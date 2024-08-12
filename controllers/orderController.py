@@ -26,3 +26,8 @@ def save():
 def find_all():
     orders = orderService.find_all()
     return order_schema.jsonify(orders), 200
+
+
+def delete_order():
+    orders = orderService.delete_orders()
+    return order_schema.jsonify(orders), 200

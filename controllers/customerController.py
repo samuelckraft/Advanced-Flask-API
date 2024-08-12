@@ -30,3 +30,7 @@ def find_all():
 def find_customers_gmail():
     customers = customerService.find_customers_gmail()
     return customer_schema.jsonify(customers), 200
+
+def delete_customer():
+    customer = customerService.delete_customer()
+    return customer_schema.jsonify(customer), 200

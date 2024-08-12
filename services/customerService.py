@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from database import db
 from models.customer import Customer
 from circuitbreaker import circuit
-from sqlalchemy import select
+from sqlalchemy import select, delete
 
 def fallback_function(customer):
     return None
@@ -30,3 +30,7 @@ def find_all():
     customers = db.session.execute(query).scalars().all()
     return customers
 
+def delete_customer():
+    query = delete(Customer.id)
+    customer = db.session.execute(query).scalars().all()
+    return f"Deleted customer {customer}"

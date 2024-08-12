@@ -26,3 +26,8 @@ def save():
 def find_all():
     products = productService.find_all()
     return product_schema.jsonify(products), 200
+
+
+def delete_product():
+    products = productService.delete_product()
+    return product_schema.jsonify(products), 200

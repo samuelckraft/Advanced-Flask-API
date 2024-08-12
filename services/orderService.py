@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from database import db
 from models.order import Order
 from circuitbreaker import circuit
-from sqlalchemy import select
+from sqlalchemy import select, delete
 
 def fallback_function(order):
     return None
@@ -29,3 +29,8 @@ def find_all():
     query = select(Order)
     orders = db.session.execute(query).scalars().all()
     return orders
+
+def delete_orders():
+    query = delete(Order.id)
+    order = db.session.execute(query).scalars().all()
+    return f"Deleted order {order}"
